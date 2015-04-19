@@ -86,6 +86,38 @@ public class TestTextFields extends TestCase {
     }
 
     //-----------------------------------------------------------------------
+    public void testMonthNames_monthZero() {
+	try {
+	    DateTimeFormatter printer = DateTimeFormat.forPattern("MMMM");
+	    for (int i=0; i<ZONES.length; i++) {
+		for (int month=1; month<=12; month++) {
+		    DateTime dt = new DateTime(2004, month, 0, 1, 20, 30, 40, ZONES[i]);
+		    String monthText = printer.print(dt);
+		    //assertEquals(MONTHS[month], monthText);
+		    fail("0th day did not throw an exception.");
+		}
+	    }
+	} catch (Exception e) {
+	}
+    }
+
+    public void testMonthNames_monthNegative() {
+        try {
+            DateTimeFormatter printer = DateTimeFormat.forPattern("MMMM");
+            for (int i=0; i<ZONES.length; i++) {
+                for (int month=1; month<=12; month++) {
+                    DateTime dt = new DateTime(2004, month, -2, 1, 20, 30, 40, ZONES[i]);
+                    String monthText = printer.print(dt);
+                    //assertEquals(MONTHS[month], monthText);                                        
+                    fail("Negative day did not throw an exception.");
+                }
+            }
+        } catch (Exception e) {
+        }
+    }
+
+
+    
     public void testMonthNames_monthStart() {
         DateTimeFormatter printer = DateTimeFormat.forPattern("MMMM");
         for (int i=0; i<ZONES.length; i++) {
