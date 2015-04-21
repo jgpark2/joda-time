@@ -854,6 +854,12 @@ public class TestDateTimeZone extends TestCase {
         assertEquals(zone.getOffset(DateTimeUtils.currentTimeMillis()), zone.getOffset(null));
     }
 
+	public void testNextTransition() {
+		UTCDateTimeZone tz = new UTCDateTImeZone();
+		long instant = tz.nextTransition(2.0);
+		assertEquals(2.0, instant);
+	}
+
     //-----------------------------------------------------------------------
     public void testGetMillisKeepLocal() {
         long millisLondon = TEST_TIME_SUMMER;
