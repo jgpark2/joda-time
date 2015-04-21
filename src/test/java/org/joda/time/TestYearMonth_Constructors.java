@@ -139,13 +139,23 @@ public class TestYearMonth_Constructors extends TestCase {
         assertEquals(2005, test.getYear());
         assertEquals(6, test.getMonthOfYear());
         assertEquals(test, YearMonth.now(LONDON));
-        
+
         test = new YearMonth(PARIS);
         assertEquals(ISO_UTC, test.getChronology());
         assertEquals(2005, test.getYear());
         assertEquals(7, test.getMonthOfYear());
         assertEquals(test, YearMonth.now(PARIS));
     }
+
+	public void testConstructor_DateTimeZone1() {
+		YearMonth test = new YearMonth(LONDON);
+		try {
+			test.now(zone);
+			assertFalse(true);
+		} catch (Exception e) {
+			assertTrue(true);
+		}
+	}
 
     /**
      * Test constructor (DateTimeZone=null)
