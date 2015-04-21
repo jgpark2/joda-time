@@ -165,6 +165,14 @@ public class TestYearMonth_Constructors extends TestCase {
 		}
 	}
 
+	public void testWithPeriodAdded() {
+		YearMonth test = new YearMonth(LONDON);
+		ReadablePeriod period = null;
+		int scalar = 0;
+		YearMonth result = test.withPeriodAdded(period, scalar);
+		assertEquals(result, test);
+	}
+
     /**
      * Test constructor (DateTimeZone=null)
      */
