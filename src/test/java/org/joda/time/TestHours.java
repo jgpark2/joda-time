@@ -221,7 +221,19 @@ public class TestHours extends TestCase {
     }
 
     //-----------------------------------------------------------------------
-    public void testToStandardWeeks() {
+    public void testToStandardYears() {
+		Hours test = Hours.hours(24 * 365);
+		Weeks expected = Weeks.weeks(52);
+		assertEquals(expected, test.toStandardWeek());
+	}
+	
+	public void testToStandardMonths() {
+		Hours test = Hours.hours(24 * 28 * 2);
+		Weeks expected = Weeks.weeks(8);
+		assertEquals(expected, test.toStandardWeek());
+	}
+	
+	public void testToStandardWeeks() {
         Hours test = Hours.hours(24 * 7 * 2);
         Weeks expected = Weeks.weeks(2);
         assertEquals(expected, test.toStandardWeeks());
