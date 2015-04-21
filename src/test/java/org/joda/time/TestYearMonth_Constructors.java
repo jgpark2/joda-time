@@ -147,10 +147,19 @@ public class TestYearMonth_Constructors extends TestCase {
         assertEquals(test, YearMonth.now(PARIS));
     }
 
-	public void testConstructor_DateTimeZone1() {
+	public void testDateTimeZoneNow() {
 		try {
 			DateTimeZone zn = null;
 			YearMonth.now(zn);
+		} catch (Exception e) {
+			assertTrue(true);
+		}
+	}
+
+	public void testChronologyNow() {
+		try {
+			Chronology chronology = null;
+			YearMonth.now(chronology);
 		} catch (Exception e) {
 			assertTrue(true);
 		}
