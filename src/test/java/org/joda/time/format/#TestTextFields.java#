@@ -158,9 +158,9 @@ public class TestTextFields extends TestCase {
         try {
             DateTimeFormatter printer = DateTimeFormat.forPattern("MMMM");
             for (int i=0; i<ZONES.length; i++) {
- 		Chronology chrono = ISOChronology.getInstance(ZONES[i]);
+		Chronology chrono = ISOChronology.getInstance(ZONES[i]);
 		for (int month=1; month<=12; month++) {
-		    DateTime dt = new DateTime(2004, month, 1, 23, 20, 30, 40, chrono);
+		    DateTime dt = new DateTime(2004, month, 1, 24, 1, 30, 40, chrono);
 		    int lastDay = chrono.dayOfMonth().getMaximumValue(dt.getMillis());
 		    dt = new DateTime(2004, month, lastDay+1, 23, 20, 30, 40, chrono);
 		    String monthText = printer.print(dt);
@@ -183,6 +183,20 @@ public class TestTextFields extends TestCase {
                 assertEquals(WEEKDAYS[weekday], weekdayText);
             }
         }
+    }
+
+    public void testWeekdayNamesOverTime() {
+	DateTimeFormatter printer = DateTimeFormat.forPattern("EEEE");
+        for (int i=0; i<ZONES.length; i++) {
+	    MutableDateTime mdt = new MutableDateTime(2004, 1, 1, 1, 20, 30, 40, ZONES[i]);
+            for (int day=1; day<=366; day++) {
+		mdt.setDayOfYear(day);
+                int weekday = mdt.getDayOfWeek();
+                String weekdayText = printer.print(mdt);
+                assertEquals(WEEKDAYS[weekday], weekdayText);
+            }
+	}
+
     }
 
     public void testHalfdayNames() {

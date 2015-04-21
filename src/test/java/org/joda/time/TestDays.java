@@ -214,6 +214,7 @@ public class TestDays extends TestCase {
         assertEquals(false, Days.TWO.isGreaterThan(Days.THREE));
         assertEquals(true, Days.ONE.isGreaterThan(null));
         assertEquals(false, Days.days(-1).isGreaterThan(null));
+	assertEquals(false, Days.ZERO.isGreaterThan(null));
     }
 
     public void testIsLessThan() {
@@ -222,6 +223,7 @@ public class TestDays extends TestCase {
         assertEquals(true, Days.TWO.isLessThan(Days.THREE));
         assertEquals(false, Days.ONE.isLessThan(null));
         assertEquals(true, Days.days(-1).isLessThan(null));
+	assertEquals(false, Days.days(0).isLessThan(null));
     }
 
     //-----------------------------------------------------------------------
@@ -258,6 +260,15 @@ public class TestDays extends TestCase {
         assertEquals(expected, test.toStandardWeeks());
     }
 
+    public void testToStandardWeeksZero() {
+	Days test = Days.days(0);
+	Weeks expected = Weeks.weeks(0);
+	assertEquals(expected, test.toStandardWeeks());
+	test = Days.MAX_VALUE;
+	expected = Weeks.weeks(Integer.MAX_VALUE / 7);
+	assertEquals(expected, test.toStandardWeeks());
+    }
+
     public void testToStandardHours() {
         Days test = Days.days(2);
         Hours expected = Hours.hours(2 * 24);
@@ -269,6 +280,14 @@ public class TestDays extends TestCase {
         } catch (ArithmeticException ex) {
             // expected
         }
+    }
+
+    public void testToStandardHoursZero() {
+	Days test = Days.days(0);
+	Hours expected = Hours.hours(0);
+	assertEquals(expected, test.toStandardHours());
+
+	Days.days(-20).toStandardHours();
     }
 
     public void testToStandardMinutes() {
