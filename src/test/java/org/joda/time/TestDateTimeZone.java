@@ -855,7 +855,7 @@ public class TestDateTimeZone extends TestCase {
     }
 
 	public void testNextTransition() {
-		//UTCDateTimeZone tz = new UTCDateTImeZone();
+		DateTimeZone tz = new DateTImeZone();
 		long instant = this.nextTransition(2.0);
 		assertEquals(2.0, instant);
 	}
