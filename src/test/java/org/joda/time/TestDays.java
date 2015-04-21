@@ -287,7 +287,12 @@ public class TestDays extends TestCase {
 	Hours expected = Hours.hours(0);
 	assertEquals(expected, test.toStandardHours());
 
-	Days.days(-20).toStandardHours();
+	try {
+	    Days.MIN_VALUE.toStandardHours();
+	    fail();
+	} catch (ArithmeticException ex) {
+	    //expected
+	}
     }
 
     public void testToStandardMinutes() {
