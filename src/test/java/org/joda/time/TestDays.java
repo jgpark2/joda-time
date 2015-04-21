@@ -345,6 +345,13 @@ public class TestDays extends TestCase {
         } catch (ArithmeticException ex) {
             // expected
         }
+
+	try {
+	    Days.days(1).plus(Integer.MAX_VALUE);
+	    fail();
+	} catch (ArithmeticException ex) {
+	    //expected
+	}
     }
 
     public void testPlus_Days() {
@@ -354,9 +361,11 @@ public class TestDays extends TestCase {
         assertEquals(2, test2.getDays());
         assertEquals(3, test3.getDays());
         assertEquals(5, result.getDays());
+	assertEquals(Days.FIVE, result);
         
         assertEquals(1, Days.ONE.plus(Days.ZERO).getDays());
         assertEquals(1, Days.ONE.plus((Days) null).getDays());
+	assertEquals(Integer.MAX_VALUE + Integer.MIN_VALUE, Days.MAX_VALUE.plus(Days.MIN_VALUE).getDays());
         
         try {
             Days.MAX_VALUE.plus(Days.ONE);
@@ -364,6 +373,13 @@ public class TestDays extends TestCase {
         } catch (ArithmeticException ex) {
             // expected
         }
+
+	try {
+	    Days.ONE.plus(Days.MAX_VALUE);
+	    fail();
+	} catch (ArithmeticException ex) {
+	    //expected
+	}
     }
 
     public void testMinus_int() {
@@ -380,6 +396,13 @@ public class TestDays extends TestCase {
         } catch (ArithmeticException ex) {
             // expected
         }
+
+	try {
+	    Days.days(-1).minus(Days.MIN_VALUE);
+	    fail();
+	} catch (ArithmeticException ex) {
+	    //expected
+	}
     }
 
     public void testMinus_Days() {
@@ -392,6 +415,7 @@ public class TestDays extends TestCase {
         
         assertEquals(1, Days.ONE.minus(Days.ZERO).getDays());
         assertEquals(1, Days.ONE.minus((Days) null).getDays());
+	assertEquals(1, Days.days(-1).minus(Days.days(-2)).getDays());
         
         try {
             Days.MIN_VALUE.minus(Days.ONE);
@@ -399,6 +423,13 @@ public class TestDays extends TestCase {
         } catch (ArithmeticException ex) {
             // expected
         }
+
+	try {
+	    Days.ONE.minus(Days.MIN_VALUE);
+	    fail();
+	} catch (ArithmeticException ex) {
+	    //expected
+	}
     }
 
     public void testMultipliedBy_int() {
@@ -426,6 +457,9 @@ public class TestDays extends TestCase {
         assertEquals(2, test.dividedBy(5).getDays());
         assertEquals(2, test.dividedBy(6).getDays());
         assertSame(test, test.dividedBy(1));
+	assertEquals(-6, test.dividedBy(-2).getDays());
+	assertEquals(-2, test.dividedBy(-5).getDays());
+	assertEquals(0, Days.ZERO.dividedBy(1).getDays());
         
         try {
             Days.ONE.dividedBy(0);
@@ -433,6 +467,7 @@ public class TestDays extends TestCase {
         } catch (ArithmeticException ex) {
             // expected
         }
+
     }
 
     public void testNegated() {
