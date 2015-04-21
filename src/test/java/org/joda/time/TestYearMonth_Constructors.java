@@ -148,9 +148,8 @@ public class TestYearMonth_Constructors extends TestCase {
     }
 
 	public void testConstructor_DateTimeZone1() {
-		YearMonth test = new YearMonth(LONDON);
 		try {
-			test.now(zone);
+			YearMonth.now(zone);
 			assertFalse(true);
 		} catch (Exception e) {
 			assertTrue(true);
