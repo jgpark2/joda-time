@@ -192,6 +192,24 @@ public class TestLocalDate_Constructors extends TestCase {
         assertEquals(test, LocalDate.now(PARIS));
     }
 
+	public void testDateTimeZoneNow() {
+		try {
+			DateTimeZone zn = null;
+			LocalDate.now(zn);
+		} catch (Exception e) {
+			assertTrue(true);
+		}
+	}
+
+	public void testChronologyNow() {
+		try {
+			Chronology cn = null;
+			LocalDate.now(cn);
+		} catch (Exception e) {
+			assertTrue(true);
+		}
+	}
+
     public void testConstructor_nullDateTimeZone() throws Throwable {
         DateTime dt = new DateTime(2005, 6, 8, 23, 59, 0, 0, LONDON);
         DateTimeUtils.setCurrentMillisFixed(dt.getMillis());
