@@ -149,7 +149,7 @@ public class TestYearMonth_Constructors extends TestCase {
 
 	public void testConstructor_DateTimeZone1() {
 		try {
-			DateTimezone zn = null;
+			DateTimeZone zn = null;
 			YearMonth.now(zn);
 		} catch (Exception e) {
 			assertTrue(true);
