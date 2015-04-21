@@ -855,7 +855,7 @@ public class TestDateTimeZone extends TestCase {
     }
 
 	public void testNextTransition() {
-		DateTimeZone zone = DateTImeZone.forID("+01:00");
+		DateTimeZone zone = DateTimeZone.forID("+01:00");
 		assertEquals(2.0, zone.nextTransition(2.0));
 	}
 
