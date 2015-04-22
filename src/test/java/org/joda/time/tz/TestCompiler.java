@@ -118,10 +118,6 @@ public class TestCompiler extends TestCase {
         TestBuilder.testReverseTransitions(tz, TestBuilder.AMERICA_LOS_ANGELES_DATA);
     }
 	
-	public void testCompileMainZeroArguments() throws Exception {
-		ZoneInfoCompiler.main();
-	}
-
     private Provider compileAndLoad(String data) throws Exception {
         File tempDir = createDataFile(data);
         File destDir = makeTempDir();
