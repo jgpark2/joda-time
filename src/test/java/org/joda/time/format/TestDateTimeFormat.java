@@ -23,7 +23,7 @@ import junit.framework.TestSuite;
 
 import org.joda.time.Chronology;
 import org.joda.time.DateTime;
-import org.joda.time.DateTimeFormatter.StyleFormatter;
+import org.joda.time.format.DateTimeFormat.StyleFormatter;
 import org.joda.time.DateTimeConstants;
 import org.joda.time.DateTimeFieldType;
 import org.joda.time.DateTimeUtils;
@@ -1175,7 +1175,7 @@ public class TestDateTimeFormat extends TestCase {
 	}
 
 	public void testEstimateParsedLength() {
-		DateTimeFormat format = new DateTimeFormat();
+		DateTimeFormat.StyleFormatter format = new DateTimeFormat.StyleFormatter(10, 12, 1);
 		assertEquals(40, format.estimateParsedLength());
 	}
 
