@@ -72,4 +72,12 @@ public class TestUTCProvider extends TestCase {
         assertEquals(null, p.getZone("Blah"));
     }
 
+	public void testGetZoneNull() {
+		try {
+			ZoneInfoProvider z = new ZoneInfoProvider("zone provider test");
+			assertEquals(null, z.getZone(null));
+		} catch (Exception e) {
+		}
+	}
+
 }
