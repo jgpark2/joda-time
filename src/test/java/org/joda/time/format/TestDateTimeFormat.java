@@ -1174,7 +1174,8 @@ public class TestDateTimeFormat extends TestCase {
 	}
 
 	public void testEstimateParsedLength() {
-		assertEquals(40, StyleFormatter.estimateParsedLength());
+		DateTimeFormat format = new DateTimeFormat();
+		assertEquals(40, format.StyleFormatter.estimateParsedLength());
 	}
 
     //-----------------------------------------------------------------------
