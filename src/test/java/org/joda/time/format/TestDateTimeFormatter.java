@@ -1024,9 +1024,7 @@ public class TestDateTimeFormatter extends TestCase {
     }
 
 	public void getDefaultYear() {
-		DateTimeFormatter f = new DateTimeFormatterBuilder()
-            .appendSecondOfDay(2).appendLiteral('.').appendFractionOfSecond(1, 9)
-                .toFormatter().withZoneUTC();
+		DateTimeFormatter f2 = f;
 		assertEquals(2000, f.getDefaultYear());
 	}
 
