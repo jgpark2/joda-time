@@ -1024,7 +1024,7 @@ public class TestDateTimeFormatter extends TestCase {
     }
 
 	public void getDefaultYear() {
-		DateTimeFormatter f = DateTimeFormatter(2012);
+		DateTimeFormatter f = DateTimeFormatter();
 		assertEquals(2012, f.getDefaultYear());
 	}
 
