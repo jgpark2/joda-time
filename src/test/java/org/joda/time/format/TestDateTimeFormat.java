@@ -29,6 +29,8 @@ import org.joda.time.DateTimeFieldType;
 import org.joda.time.DateTimeUtils;
 import org.joda.time.DateTimeZone;
 import org.joda.time.chrono.GJChronology;
+import org.joda.time.LocalTime;
+import org.joda.time.ReadablePartial;
 
 /**
  * This class is a Junit unit test for DateTime Formating.
@@ -1177,6 +1179,17 @@ public class TestDateTimeFormat extends TestCase {
 	public void testEstimateParsedLength() {
 		DateTimeFormat.StyleFormatter format = new DateTimeFormat.StyleFormatter(10, 12, 1);
 		assertEquals(40, format.estimateParsedLength());
+	}
+	
+	public void testPrintTo() {
+		StringBuilder buf = new StringBuilder("20");
+        try {
+			ReadablePartial localTime = new LocalTime();
+			
+			DateTimeFormat.StyleFormatter format = new DateTimeFormat.StyleFormatter(10, 12, 1);
+            format.printTo((Appendable) buf, localTime, originalLocale);
+        } catch (Exception ex) {
+        }
 	}
 
     //-----------------------------------------------------------------------
