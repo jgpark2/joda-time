@@ -1168,6 +1168,11 @@ public class TestDateTimeFormat extends TestCase {
         assertEquals(2, parsed.getMinuteOfHour());
     }
 
+	public void testPatternForStyle() throws Exception {
+		String format = DateTimeFormat.patternForStyle("MF", null);
+		assertNull(format);
+	}
+
     //-----------------------------------------------------------------------
     private void check(DateTime test, int hour, int min, int sec) {
         assertEquals(hour, test.getYear());
