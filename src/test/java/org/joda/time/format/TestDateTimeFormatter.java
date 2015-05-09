@@ -285,7 +285,8 @@ public class TestDateTimeFormatter extends TestCase {
         DateTimeFormatter f2 = f.withChronology(BUDDHIST_PARIS);
         assertEquals(BUDDHIST_PARIS, f2.getChronology());
         assertSame(f2, f2.withChronology(BUDDHIST_PARIS));
-        
+teTimeFormatter f2 = new DateTimeFormatter(f.getPrinter(), f.getParser());
+        assertEquals(f.getPrinter(), f2.getPrinter());
         f2 = f.withChronology(null);
         assertEquals(null, f2.getChronology());
         assertSame(f2, f2.withChronology(null));
@@ -1022,10 +1023,10 @@ public class TestDateTimeFormatter extends TestCase {
         assertEquals("2005-10-30 02:00:00.0 EST", fmt.print(outDST));
         assertEquals("2005-10-30 02:00:01.0 EST", fmt.print(outDST_2));
     }
-
-	public void getDefaultYear() {
+/*
+	public void testGetDefaultYear() {
 		DateTimeFormatter f2 = new DateTimeFormatter(f.getPrinter(), f.getParser());
         assertEquals(2000, f2.getDefaultYear());	
 	}
-
+*/
 }
