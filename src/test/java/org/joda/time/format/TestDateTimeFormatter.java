@@ -1023,4 +1023,9 @@ public class TestDateTimeFormatter extends TestCase {
         assertEquals("2005-10-30 02:00:01.0 EST", fmt.print(outDST_2));
     }
 
+	public void getDefaultYear() {
+		DateTimeFormatter f = DateTimeFormat.forPattern("M d").withDefaultYear(2012);
+		assertEquals(2012, f.getDefaultYear());
+	}
+
 }
