@@ -1170,7 +1170,7 @@ public class TestDateTimeFormat extends TestCase {
 
 	public void testPatternForStyle() throws Exception {
 		String format = DateTimeFormat.patternForStyle("MF", null);
-		assertNull(format);
+		assertNotNull(format);
 	}
 
     //-----------------------------------------------------------------------
