@@ -231,4 +231,8 @@ public class TestCompiler extends TestCase {
         assertEquals(next, new DateTime(2006, 3, 31, 0, 0, DateTimeZone.forOffsetHours(2)).getMillis());
     }
 
+	public void test_parseZoneChar() {
+		assertEquals('s', ZoneInfoCompiler.parseZoneChar('s'));
+	}
+
 }
