@@ -23,6 +23,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.joda.time.DateTimeZone;
+import org.joda.time.tz.ZoneInfoProvider;
 
 /**
  * This class is a JUnit test for UTCProvider.
