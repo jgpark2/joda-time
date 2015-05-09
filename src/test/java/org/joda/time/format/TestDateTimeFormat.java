@@ -1173,6 +1173,11 @@ public class TestDateTimeFormat extends TestCase {
 		assertNotNull(format);
 	}
 
+	public void testEstimateParsedLength() {
+		DateTimeFormat format = DateTimeFormat();
+		assertEquals(40, format.estimateParsedLength());
+	}
+
     //-----------------------------------------------------------------------
     private void check(DateTime test, int hour, int min, int sec) {
         assertEquals(hour, test.getYear());
