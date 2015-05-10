@@ -130,6 +130,8 @@ public class TestAll extends TestCase {
         suite.addTest(TestStringConvert.suite());
         suite.addTest(TestSerialization.suite());
         suite.addTest(TestIllegalFieldValueException.suite());
+
+	suite.addTest(TestStrictDateTimeField.suite());
         return suite;
     }
 
