@@ -1,3 +1,4 @@
+
 package org.joda.time.field;
 
 import junit.framework.TestCase;
@@ -38,7 +39,13 @@ public class TestStrictDateTimeField extends TestCase {
     public void test_getInstance() {
         assertEquals(null, StrictDateTimeField.getInstance(null));
         
-        LenientDateTimeField field = (LenientDateTimeField) new DelegatedDateTimeField(ISOChronology.getInstanceUTC().dayOfMonth());
+        LenientDateTimeField field = new LenientDateTimeField(ISOChronology.getInstanceUTC().dayOfMonth(),ISOChronology.getInstanceUTC());
         assertEquals(false, StrictDateTimeField.getInstance(field).isLenient());
+    }
+    
+    //-----------------------------------------------------------------------
+    public void test_set() {
+        LenientDateTimeField field = new LenientDateTimeField(ISOChronology.getInstanceUTC().dayOfMonth(),ISOChronology.getInstanceUTC());
+        field.set(0L, 1);
     }
 }
