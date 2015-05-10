@@ -16,3 +16,4 @@
 src/tz-data/
 *TempTest*
 /src/main/resources/org/joda/time/tz/data/
+/src/test/java/org/joda/time/parameterized/

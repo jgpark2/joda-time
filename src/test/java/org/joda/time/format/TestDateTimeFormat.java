@@ -23,11 +23,14 @@ import junit.framework.TestSuite;
 
 import org.joda.time.Chronology;
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat.StyleFormatter;
 import org.joda.time.DateTimeConstants;
 import org.joda.time.DateTimeFieldType;
 import org.joda.time.DateTimeUtils;
 import org.joda.time.DateTimeZone;
 import org.joda.time.chrono.GJChronology;
+import org.joda.time.LocalTime;
+import org.joda.time.ReadablePartial;
 
 /**
  * This class is a Junit unit test for DateTime Formating.
@@ -1167,6 +1170,27 @@ public class TestDateTimeFormat extends TestCase {
         assertEquals(1, parsed.getHourOfDay());
         assertEquals(2, parsed.getMinuteOfHour());
     }
+
+	public void testPatternForStyle() throws Exception {
+		String format = DateTimeFormat.patternForStyle("MF", null);
+		assertNotNull(format);
+	}
+
+	public void testEstimateParsedLength() {
+		DateTimeFormat.StyleFormatter format = new DateTimeFormat.StyleFormatter(10, 12, 1);
+		assertEquals(40, format.estimateParsedLength());
+	}
+	
+	public void testPrintTo() {
+		StringBuilder buf = new StringBuilder("20");
+        try {
+			ReadablePartial localTime = new LocalTime();
+			
+			DateTimeFormat.StyleFormatter format = new DateTimeFormat.StyleFormatter(10, 12, 1);
+            format.printTo((Appendable) buf, localTime, originalLocale);
+        } catch (Exception ex) {
+        }
+	}
 
     //-----------------------------------------------------------------------
     private void check(DateTime test, int hour, int min, int sec) {

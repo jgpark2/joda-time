@@ -23,6 +23,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.joda.time.DateTimeZone;
+import org.joda.time.tz.ZoneInfoProvider;
 
 /**
  * This class is a JUnit test for UTCProvider.
@@ -71,5 +72,13 @@ public class TestUTCProvider extends TestCase {
         assertEquals(null, p.getZone("Europe/London"));
         assertEquals(null, p.getZone("Blah"));
     }
+
+	public void testGetZoneNull() {
+		try {
+			ZoneInfoProvider z = new ZoneInfoProvider("zone provider test");
+			assertEquals(null, z.getZone(null));
+		} catch (Exception e) {
+		}
+	}
 
 }
